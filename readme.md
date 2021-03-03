@@ -99,3 +99,15 @@
         {age: { $gt 18}},   // Nested objects for age query, then another for query operator
         {name: 1, addresss: 1} // The next object is for projection, lets you specify to show just the name and addresses of the query documents
     }).limit(5)  // This lets you return a specified amount, 5 in this example
+
+    - ID will always comeback unless you add the projection {_id: 0}
+
+
+## mongoDB - CRUD Operations - Update
+---
+
+1. db.products.updateOne({id: 1}, {$set: {stock: 32}}) // To updateOne product, in the first obeject we select our prodcut, while in the second object we use the $set: {stock:32}
+
+2. db.products.find() // To show all the products and columns, and you will see our id 1now has a stock and value
+
+3. 
