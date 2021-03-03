@@ -57,4 +57,45 @@
 10. Now lets add our 'Pencil' from previous module and add the stock columns
     - db.products.insertOne({id: 2, name: "Pencil", price: 0.80, stock: 12})
 
-11. 
+## mongoDB - CRUD Operations - Read
+---
+
+[mongodb-query-operators](https://docs.mongodb.com/manual/reference/operator/query/)
+
+1. To read from the collection we just created we can use the command below
+    - db.collection.find()    //Template command; 
+    - db.products.find()    // This finds everything in the collection
+
+    - db.collection.find(query, projection) // Template command
+
+2. Query Operators let you seach more granularly and find more specific data
+    
+    Comparison Operators
+    For comparison of different BSON type values, see the specified BSON comparison order.
+
+    Name	Description
+    $eq	Matches values that are equal to a specified value.
+    $gt	Matches values that are greater than a specified value.
+    $gte	Matches values that are greater than or equal to a specified value.
+    $in	Matches any of the values specified in an array.
+    $lt	Matches values that are less than a specified value.
+    $lte	Matches values that are less than or equal to a specified value.
+    $ne	Matches all values that are not equal to a specified value.
+    $nin	Matches none of the values specified in an array.
+
+    Logical
+    Name	Description
+    $and	Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
+    $not	Inverts the effect of a query expression and returns documents that do not match the query expression.
+    $nor	Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
+    $or	Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
+
+    - db.products.find({name: "Pencil"})  // This will find us all items with the name 'Pencil'
+
+    - db.products.find({price: {$gt: 1}}) // This will seach for all items with a price thats 'Greater Than" 1. Another nested object with the $GT flag.
+
+3. Projections allow us to specify what fields/columns are returned from our documents that meet the query criteria
+    - db.users.find({   // Basic Command to find
+        {age: { $gt 18}},   // Nested objects for age query, then another for query operator
+        {name: 1, addresss: 1} // The next object is for projection, lets you specify to show just the name and addresses of the query documents
+    }).limit(5)  // This lets you return a specified amount, 5 in this example
