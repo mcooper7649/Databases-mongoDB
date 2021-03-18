@@ -14,6 +14,8 @@
 
 5. cd ~ to got root of profile
 
+#### IF your LOCAL DB aka mongod command stops working, do step 6 again ###
+
 6. alias mongod="sudo mongod --dbpath /Users/mcooper/data/db"  // This sets the alias "mongod" to run our db from the specified path.
 
 7. mongo --version from shell to confirm installation was successful. 
